@@ -1,42 +1,34 @@
 import { styled } from "styled-components";
 import ResultTab from "./ResultTab";
-import { useState } from "react";
 
 const Tabs = styled.ul`
-  padding: 0;
   list-style: none;
   display: flex;
-  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
 `;
 
-export default function ResultTabs() {
-  const [tabActive, setTabActive] = useState({
-    tab1: true,
-    tab2: false,
-    tab3: false,
-  });
-
-  const handleTabClick = (tabTitle) => {};
-
+export default function ResultTabs({ tabActive, onClick }) {
   return (
     <Tabs>
       <ResultTab
         key="tab1"
         title="일반 과세 (15.4%)"
-        isActive={true}
-        onClick={() => handleTabClick("tab1")}
+        isActive={tabActive === "tab1"}
+        onClick={() => onClick("tab1")}
       />
       <ResultTab
         key="tab2"
         title="세금 과세 (9.5%)"
-        isActive={false}
-        onClick={() => handleTabClick("tab2")}
+        isActive={tabActive === "tab2"}
+        onClick={() => onClick("tab2")}
       />
       <ResultTab
         key="tab3"
         title="비과세 (0%)"
-        isActive={false}
-        onClick={() => handleTabClick("tab3")}
+        isActive={tabActive === "tab3"}
+        onClick={() => onClick("tab3")}
       />
     </Tabs>
   );

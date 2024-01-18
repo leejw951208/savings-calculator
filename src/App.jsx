@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Result from "./components/Result";
+import Results from "./components/Results";
 import SavingsItems from "./components/SavingsItems";
 import Template from "./components/Template";
 
@@ -9,7 +9,7 @@ function App() {
       <Template>
         <Header />
         <SavingsItems />
-        <Result />
+        <Results />
       </Template>
     </>
   );
