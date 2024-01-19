@@ -1,10 +1,9 @@
 import { styled } from "styled-components";
 import SavingsItem from "./SavingsItem";
 import { useRef, useState } from "react";
-import useDebounce from "../hooks/useDebounce";
 import Button from "./Button";
 import Buttons from "./Buttons";
-import savingsCalculate from "../savingsCalculate";
+import savingsCalculate from "../util/savingsCalculate";
 
 const Items = styled.section`
   background-color: #a0b6c1;
@@ -27,7 +26,7 @@ const inputValidate = (title, value) => {
   }
 };
 
-export default function SavingsItems() {
+export default function SavingsItems({ onResults }) {
   const [inputValue, setInputValue] = useState({
     money: "",
     period: "",
@@ -44,7 +43,12 @@ export default function SavingsItems() {
   };
 
   const handleCalculate = () => {
-    savingsCalculate(inputValue.money, inputValue.period, inputValue.interest);
+    onResults(
+      inputValue.money,
+      inputValue.period,
+      inputValue.interest,
+      savingsCalculate(inputValue.money, inputValue.period, inputValue.interest)
+    );
   };
 
   const handleReset = () => {

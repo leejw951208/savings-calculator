@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const StyledResult = styled.section``;
 
-export default function Results() {
+export default function Results({ money, period, interest, calculate }) {
   const [tabActive, setTabActive] = useState("tab1");
 
   const handleTabClick = (tabTitle) => {
@@ -15,7 +15,9 @@ export default function Results() {
   return (
     <StyledResult>
       <ResultTabs tabActive={tabActive} onClick={handleTabClick} />
-      <Result>{tabActive}</Result>
+      <Result>
+        {money}, {period}, {interest}, {calculate?.normal}
+      </Result>
     </StyledResult>
   );
 }

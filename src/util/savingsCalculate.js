@@ -36,7 +36,16 @@ const savingsCalculate = (money, period, interest) => {
     depositDateSummary -= contractDate;
   });
 
-  console.log(interestMoney);
+  // 천 단위까지 0으로 치환하기 위해서 선언, 은행 적금 계산기도 이 방식으로 계산함
+  const finalInterestMoney = Math.round(interestMoney / 10000) * 10000;
+
+  return {
+    normal:
+      Number(money) + finalInterestMoney - (finalInterestMoney / 100) * 15.4,
+    advantage:
+      Number(money) + finalInterestMoney - (finalInterestMoney / 100) * 9.5,
+    exemption: Number(money) + finalInterestMoney,
+  };
 };
 
 export default savingsCalculate;
