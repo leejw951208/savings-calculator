@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import Input from "./Input";
-import { useRef } from "react";
 
 const StyledArticle = styled.article`
   display: flex;
@@ -9,10 +8,12 @@ const StyledArticle = styled.article`
   flex: 1;
 `;
 
-export default function SavingsItem({ placeholder, onChange, value }) {
+const SavingsItem = ({ placeholder, value, onChange }) => {
   return (
     <StyledArticle>
-      <Input placeholder={placeholder} onChange={onChange} value={value} />
+      <Input placeholder={placeholder} value={value} onChange={onChange} />
     </StyledArticle>
   );
-}
+};
+
+export default SavingsItem;

@@ -6,7 +6,7 @@ import Button from "./Button";
 import Buttons from "./Buttons";
 
 const Items = styled.section`
-  background-color: #eeeeee;
+  background-color: #a0b6c1;
   border-radius: 0.5rem;
   padding: 15px;
   display: flex;
@@ -14,33 +14,55 @@ const Items = styled.section`
   justify-content: space-between;
 `;
 
+const inputValidate = (title, value) => {
+  if (title === "interest") {
+    return value
+      .replace(/[^0-9.]/g, "")
+      .split(".")
+      .slice(0, 2)
+      .join(".");
+  } else {
+    return value.replace(/[^0-9]/g, "");
+  }
+};
+
 export default function SavingsItems() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState({
+    money: "",
+    period: "",
+    interest: "",
+  });
 
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-    console.log(inputValue);
+  const handleChange = (inputTitle, e) => {
+    setInputValue((prev) => {
+      return {
+        ...prev,
+        [inputTitle]: inputValidate(inputTitle, e.target.value),
+      };
+    });
   };
-
-  // useDebounce(
-  //   () => {
-  //     setFieldIndex((prev) => prev + 1);
-  //     setFields((prev) => {
-  //       const addField = FIELDS[fieldIndex];
-  //       FIELDS.slice(fieldIndex);
-  //       return [...prev, addField];
-  //     });
-  //   },
-  //   inputValue,
-  //   300
-  // );
 
   return (
     <>
-      <Items onChange={handleChange} value={inputValue}>
-        <SavingsItem key="금액" placeholder="금액(원)" />
-        <SavingsItem key="기간" placeholder="기간(개월)" />
-        <SavingsItem key="이율" placeholder="이율(%)" />
+      <Items>
+        <SavingsItem
+          key="금액"
+          placeholder="금액(원)"
+          value={inputValue.money}
+          onChange={(e) => handleChange("money", e)}
+        />
+        <SavingsItem
+          key="기간"
+          placeholder="기간(개월)"
+          value={inputValue.period}
+          onChange={(e) => handleChange("period", e)}
+        />
+        <SavingsItem
+          key="이율"
+          placeholder="이율(%)"
+          value={inputValue.interest}
+          onChange={(e) => handleChange("interest", e)}
+        />
       </Items>
       <Buttons>
         <Button name="초기화" flexGrow="1" />
