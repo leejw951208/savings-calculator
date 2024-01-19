@@ -14,9 +14,9 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function Button({ name, flexGrow }) {
+export default function Button({ name, flexGrow, onClick }) {
   return (
-    <StyledButton $name={name} $flexGrow={flexGrow}>
+    <StyledButton $name={name} $flexGrow={flexGrow} onClick={onClick}>
       {name}
     </StyledButton>
   );

@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import useDebounce from "../hooks/useDebounce";
 import Button from "./Button";
 import Buttons from "./Buttons";
+import savingsCalculate from "../savingsCalculate";
 
 const Items = styled.section`
   background-color: #a0b6c1;
@@ -42,6 +43,18 @@ export default function SavingsItems() {
     });
   };
 
+  const handleCalculate = () => {
+    savingsCalculate(inputValue.money, inputValue.period, inputValue.interest);
+  };
+
+  const handleReset = () => {
+    setInputValue({
+      money: "",
+      period: "",
+      interest: "",
+    });
+  };
+
   return (
     <>
       <Items>
@@ -65,8 +78,8 @@ export default function SavingsItems() {
         />
       </Items>
       <Buttons>
-        <Button name="초기화" flexGrow="1" />
-        <Button name="계산하기" flexGrow="2" />
+        <Button name="초기화" flexGrow="1" onClick={handleReset} />
+        <Button name="계산하기" flexGrow="2" onClick={handleCalculate} />
       </Buttons>
     </>
   );
