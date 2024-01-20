@@ -8,7 +8,12 @@ function App() {
   const [results, setResults] = useState({});
 
   const handleResults = (money, period, interest, calculate) => {
-    setResults({ money, period, interest, calculate });
+    setResults({
+      money,
+      period,
+      interest,
+      calculate,
+    });
   };
 
   const handleReset = () => {

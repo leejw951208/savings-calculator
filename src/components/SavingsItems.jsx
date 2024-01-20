@@ -16,14 +16,23 @@ const Items = styled.section`
 `;
 
 const inputValidate = (title, value) => {
+  let inputValue = value;
   if (title === "interest") {
-    return value
+    if (inputValue > 100) {
+      inputValue = "100";
+    }
+    return inputValue
       .replace(/[^0-9.]/g, "")
       .split(".")
       .slice(0, 2)
       .join(".");
   } else {
-    return value.replace(/[^0-9]/g, "");
+    if (title === "period") {
+      if (inputValue > 100) {
+        inputValue = "100";
+      }
+    }
+    return inputValue.replace(/[^0-9]/g, "");
   }
 };
 
@@ -48,7 +57,11 @@ export default function SavingsItems({ onResults, onReset }) {
       inputValue.money,
       inputValue.period,
       inputValue.interest,
-      savingsCalculate(inputValue.money, inputValue.period, inputValue.interest)
+      savingsCalculate(
+        inputValue.money.replace(/[,]/g, ""),
+        inputValue.period,
+        inputValue.interest
+      )
     );
   };
 
