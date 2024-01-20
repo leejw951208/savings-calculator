@@ -20,7 +20,7 @@ export default function ResultTabs({ tabActive, onClick }) {
       />
       <ResultTab
         key="advantage"
-        title="세금 과세 (9.5%)"
+        title="세금 우대 (9.5%)"
         isActive={tabActive === "advantage"}
         onClick={() => onClick("advantage")}
       />
