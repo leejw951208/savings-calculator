@@ -13,22 +13,22 @@ export default function ResultTabs({ tabActive, onClick }) {
   return (
     <Tabs>
       <ResultTab
-        key="tab1"
+        key="normal"
         title="일반 과세 (15.4%)"
-        isActive={tabActive === "tab1"}
-        onClick={() => onClick("tab1")}
+        isActive={tabActive === "normal"}
+        onClick={() => onClick("normal")}
       />
       <ResultTab
-        key="tab2"
+        key="advantage"
         title="세금 과세 (9.5%)"
-        isActive={tabActive === "tab2"}
-        onClick={() => onClick("tab2")}
+        isActive={tabActive === "advantage"}
+        onClick={() => onClick("advantage")}
       />
       <ResultTab
-        key="tab3"
+        key="exemption"
         title="비과세 (0%)"
-        isActive={tabActive === "tab3"}
-        onClick={() => onClick("tab3")}
+        isActive={tabActive === "exemption"}
+        onClick={() => onClick("exemption")}
       />
     </Tabs>
   );

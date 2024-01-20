@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Button from "./Button";
 import Buttons from "./Buttons";
 import savingsCalculate from "../util/savingsCalculate";
+import addComma from "../util/addComma";
 
 const Items = styled.section`
   background-color: #a0b6c1;
@@ -26,7 +27,7 @@ const inputValidate = (title, value) => {
   }
 };
 
-export default function SavingsItems({ onResults }) {
+export default function SavingsItems({ onResults, onReset }) {
   const [inputValue, setInputValue] = useState({
     money: "",
     period: "",
@@ -37,7 +38,7 @@ export default function SavingsItems({ onResults }) {
     setInputValue((prev) => {
       return {
         ...prev,
-        [inputTitle]: inputValidate(inputTitle, e.target.value),
+        [inputTitle]: addComma(inputValidate(inputTitle, e.target.value)),
       };
     });
   };
@@ -57,6 +58,7 @@ export default function SavingsItems({ onResults }) {
       period: "",
       interest: "",
     });
+    onReset();
   };
 
   return (
@@ -82,8 +84,22 @@ export default function SavingsItems({ onResults }) {
         />
       </Items>
       <Buttons>
-        <Button name="초기화" flexGrow="1" onClick={handleReset} />
-        <Button name="계산하기" flexGrow="2" onClick={handleCalculate} />
+        <Button
+          name="초기화"
+          flexGrow="1"
+          onClick={handleReset}
+          isActive={
+            inputValue.money && inputValue.period && inputValue.interest
+          }
+        />
+        <Button
+          name="계산하기"
+          flexGrow="2"
+          onClick={handleCalculate}
+          isActive={
+            inputValue.money && inputValue.period && inputValue.interest
+          }
+        />
       </Buttons>
     </>
   );

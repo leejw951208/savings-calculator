@@ -7,10 +7,10 @@ const StyledTemplate = styled.div`
   background-color: white;
   border: 1px solid white;
   border-radius: 1.5rem;
-  width: 768px;
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.23);
   padding: 20px;
   gap: 30px;
+  width: 768px;
 `;
 
 export default function Template({ children }) {

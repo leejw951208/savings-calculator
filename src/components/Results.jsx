@@ -2,22 +2,34 @@ import { styled } from "styled-components";
 import ResultTabs from "./ResultTabs";
 import Result from "./Result";
 import { useState } from "react";
+import addComma from "../util/addComma";
 
-const StyledResult = styled.section``;
+const Span = styled.span`
+  font-size: 20px;
+  font-weight: 500;
+  color: #1d82cb;
+`;
 
-export default function Results({ money, period, interest, calculate }) {
-  const [tabActive, setTabActive] = useState("tab1");
+export default function Results({ results }) {
+  const [tabActive, setTabActive] = useState("normal");
 
   const handleTabClick = (tabTitle) => {
     setTabActive(tabTitle);
   };
 
   return (
-    <StyledResult>
+    <section>
       <ResultTabs tabActive={tabActive} onClick={handleTabClick} />
       <Result>
-        {money}, {period}, {interest}, {calculate?.normal}
+        {Object.keys(results).length > 0 && results.constructor === Object && (
+          <p>
+            매월 <Span>{addComma(results.money)}</Span>원씩{" "}
+            <Span>{results.period}</Span>
+            개월동안 연 이율 <Span>{results.interest}</Span>%로 저축하면 총
+            {addComma(results.calculate[tabActive])}원을 저축하실 수 있습니다.
+          </p>
+        )}
       </Result>
-    </StyledResult>
+    </section>
   );
 }

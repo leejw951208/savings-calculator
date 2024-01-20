@@ -11,17 +11,16 @@ function App() {
     setResults({ money, period, interest, calculate });
   };
 
+  const handleReset = () => {
+    setResults({});
+  };
+
   return (
     <>
       <Template>
         <Header />
-        <SavingsItems onResults={handleResults} />
-        <Results
-          money={results.money}
-          period={results.period}
-          interest={results.interest}
-          calculate={results.calculate}
-        />
+        <SavingsItems onResults={handleResults} onReset={handleReset} />
+        <Results results={results} />
       </Template>
     </>
   );

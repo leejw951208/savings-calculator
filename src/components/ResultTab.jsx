@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 const Tab = styled.li`
-  padding: 5px 20px;
+  padding: 10px 20px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   cursor: pointer;
