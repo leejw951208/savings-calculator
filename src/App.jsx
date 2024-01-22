@@ -21,13 +21,14 @@ function App() {
   };
 
   return (
-    <>
-      <Template>
-        <Header />
-        <SavingsItems onResults={handleResults} onReset={handleReset} />
-        <Results results={results} />
-      </Template>
-    </>
+    <Template>
+      <Header />
+      <SavingsItems onResults={handleResults} onReset={handleReset} />
+      <Results results={results} />
+      <a href="https://study-app-eta.vercel.app/" target="_blank">
+        More projects
+      </a>
+    </Template>
   );
 }
 
