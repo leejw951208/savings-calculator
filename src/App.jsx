@@ -26,7 +26,7 @@ function App() {
       <SavingsItems onResults={handleResults} onReset={handleReset} />
       <Results results={results} />
       <a href="https://study-app-eta.vercel.app/" target="_blank">
-        More projects
+        More
       </a>
     </Template>
   );
