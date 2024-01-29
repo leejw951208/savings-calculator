@@ -25,7 +25,7 @@ function App() {
       <Header />
       <SavingsItems onResults={handleResults} onReset={handleReset} />
       <Results results={results} />
-      <a href="https://study-app-eta.vercel.app/" target="_blank">
+      <a href="https://my-blog-roan-kappa.vercel.app/" target="_blank">
         More
       </a>
     </Template>
